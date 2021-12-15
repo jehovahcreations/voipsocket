@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1></h1>
+    <input id="theInput">
+    <button onclick="send()">bbb</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <script>
+        var room = "abc123";
+        var socket = io('http://localhost:3000');
+        socket.on('connection')
+        var username = prompt('Enter your Username');
+
+        socket.emit('registered user', username);
+        socket.on('private chat created', (data) => {
+            alert(data);
+            document.querySelector('h1').innerHTML = data;
+        })
+
+        function send() {
+            socket.emit('non', {
+                uid: '123',
+                msg: 'shakeela'
+            });
+            //alert('send');
+        }
+    </script>
+</body>
+
+</html>
